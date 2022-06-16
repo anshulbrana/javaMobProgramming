@@ -1,0 +1,5 @@
+services/exceptions/UnableToLoadContactsException.class
+datamodel/Contact.class
+launchers/TestSerialization.class
+launchers/Launcher.class
+services/data/ContactCsvDAO.class
