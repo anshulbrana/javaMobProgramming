@@ -1,11 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: tests.TestJUN2
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.023 s <<< FAILURE! - in tests.TestJUN2
-initializationError(tests.TestJUN2)  Time elapsed: 0.003 s  <<< ERROR!
-org.junit.runners.model.InvalidTestClassError: 
-Invalid test class 'tests.TestJUN2':
-  1. Method openFile() should be static
-  2. Method destroyFile() should be static
-  3. Method closeFile() should be static
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 s - in tests.TestJUN2

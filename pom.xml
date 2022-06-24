@@ -16,7 +16,7 @@
 
     <dependencies>
 
-<!--        junit dependency-->
+        <!--        junit dependency-->
 
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <dependency>
@@ -26,7 +26,7 @@
             <scope>test</scope>
         </dependency>
 
-<!--        spring framework-->
+        <!--        spring framework-->
 
         <!--        For test in spring Framework-->
         <dependency>
@@ -43,7 +43,7 @@
             <version>5.3.20</version>
         </dependency>
 
-<!--        	Hibernate 5.4.5-Final-->
+        <!--        	Hibernate 5.4.5-Final-->
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -51,7 +51,7 @@
             <version>5.4.5.Final</version>
         </dependency>
 
-<!--        Spring-context 5.1.9.RELEASE-->
+        <!--        Spring-context 5.1.9.RELEASE-->
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
         <dependency>
@@ -60,7 +60,7 @@
             <version>5.1.9.RELEASE</version>
         </dependency>
 
-<!--     	Spring-orm 5.1.9.RELEASE-->
+        <!--     	Spring-orm 5.1.9.RELEASE-->
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -68,7 +68,16 @@
             <version>5.1.9.RELEASE</version>
         </dependency>
 
-<!--        Spring-test 5.1.9.RELEASE-->
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.1.212</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!--        Spring-test 5.1.9.RELEASE-->
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -77,16 +86,7 @@
             <scope>test</scope>
         </dependency>
 
-<!--        Log4j2-core 2.12.1-->
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.12.1</version>
-        </dependency>
-
-
-<!--        Javax-inject 1.0-->
+        <!--        Javax-inject 1.0-->
         <!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
         <dependency>
             <groupId>javax.inject</groupId>
