@@ -1,50 +1,41 @@
 package tests;
 
+import conf.AppConfiguration;
 
-import datamodel.Contact;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import services.data.ContactCsvDAO;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import services.database.Configuration;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.sql.DataSource;
 import java.sql.*;
+
+@ExtendWith(SpringExtension.class)
+
+@ContextConfiguration(classes = {AppConfiguration.class})
+
 
 public class TestSPR4 {
 
     static {
-        System.setProperty("conf.file","src/test/resources/conf.properties");
-    }
-
-    private Connection cnt;
-
-    public void testDatabase(){
-        Configuration conf = Configuration.getInstance();
+        System.setProperty("conf.file", "src/test/resources/conf.properties");
     }
 
 
-    @BeforeEach
-    public void initialize() throws SQLException {
-        // TO create a table in in-memory database
-        this.cnt = DriverManager.getConnection("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", "username", "password");
-        PreparedStatement preparedStatement = cnt.prepareStatement("CREATE TABLE IF NOT EXISTS contact (firstName VARCHAR(255), lastName VARCHAR(255), phone1 VARCHAR(255), phone VARCHAR(255), email VARCHAR(255), state VARCHAR(255))");
-        preparedStatement.execute();
-    }
-
+    @Inject
+    @Named("db.dataSource")
+    DataSource dataSource;
 
     @Test
-    public void test() throws SQLException {
-
-        Connection connection = cnt;
-        ResultSet resultSet = connection.prepareStatement("select * from contact where name = 'test'").executeQuery();
-        String retrievedName = null;
-
-        while (resultSet.next()) {
-            retrievedName = resultSet.getString("name");
-        }
-
-        if (retrievedName == null) {
-            throw new RuntimeException("Name test was not found, expected to be not null");
-        }
+    public void TestDataSource() throws SQLException {
+        Assertions.assertNotNull(dataSource);
+        Connection connection = dataSource.getConnection();
+        System.out.println(connection.getSchema());
+        System.out.println("Database is ready to use....");
+        connection.close();
     }
 }

@@ -33,7 +33,7 @@ public class AppConfiguration {
     }
 
 
-    @Bean("db.mainDatasource")
+    @Bean("db.dataSource")
     public DataSource dataSource(@Qualifier("conf.mainConf") services.database.Configuration conf){
         return new DriverManagerDataSource(conf.getDBUrl(), conf.getDBUser(), conf.getDBPassword());
 
