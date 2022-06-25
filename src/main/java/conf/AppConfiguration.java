@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import services.data.ContactJDBCDAO;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -39,5 +40,9 @@ public class AppConfiguration {
 
     }
 
+    @Bean("singleton.contactJDBCDAO")
+    public ContactJDBCDAO contactJDBCDAO(){
+        return new ContactJDBCDAO();
+    }
 
 }

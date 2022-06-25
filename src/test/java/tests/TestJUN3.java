@@ -2,9 +2,6 @@ package tests;
 
 import datamodel.Contact;
 import services.data.ContactCsvDAO;
-import services.exceptions.UnableToLoadContactsException;
-
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

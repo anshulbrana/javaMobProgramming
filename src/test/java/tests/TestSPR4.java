@@ -1,14 +1,11 @@
 package tests;
 
 import conf.AppConfiguration;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import services.database.Configuration;
-
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.sql.DataSource;
@@ -20,6 +17,7 @@ import java.sql.*;
 
 
 public class TestSPR4 {
+
 
     static {
         System.setProperty("conf.file", "src/test/resources/conf.properties");

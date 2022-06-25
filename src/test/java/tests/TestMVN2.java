@@ -2,7 +2,6 @@ package tests;
 
 import datamodel.Contact;
 import services.data.ContactCsvDAO;
-
 import java.util.List;
 
 public class TestMVN2 {

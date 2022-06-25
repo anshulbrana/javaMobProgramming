@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: tests.TestSPR2
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in tests.TestSPR2
+testInjection(tests.TestSPR2)  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: not <null>
+	at tests.TestSPR2.testInjection(TestSPR2.java:30)
+

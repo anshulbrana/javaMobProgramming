@@ -2,16 +2,11 @@ package tests;
 
 import datamodel.Contact;
 import org.junit.*;
-import org.junit.jupiter.api.Assertions;
 import services.data.ContactCsvDAO;
 import services.exceptions.UnableToLoadContactsException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertTrue;
 
 
 public class TestJUN2 {
