@@ -19,31 +19,43 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {AppConfiguration.class})
 
 public class ContactJDBCDAO {
-
     static {
         System.setProperty("conf.file", "src/test/resources/conf.properties");
     }
 
-    @Inject
-    @Named("db.dataSource")
-    DataSource dataSource;
 
-//    @BeforeEach
-//    public void create() throws SQLException {
-//        // TO create a table in in-memory database
-//        Assertions.assertNotNull(dataSource);
-//        Connection connection = dataSource.getConnection();
-//        PreparedStatement preparedStatement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS contact (firstName VARCHAR(255), lastName VARCHAR(255), phone1 VARCHAR(255), phone VARCHAR(255), email VARCHAR(255), state VARCHAR(255))");
-//        preparedStatement.execute();
-//    }
+    private DataSource dataSource;
+
+    private Connection connection;
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
+    public DataSource getDataSource() {
+        return dataSource;
+    }
+
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    public void create() throws SQLException {
+        // TO create a table in in-memory database
+        Assertions.assertNotNull(dataSource);
+        connection = dataSource.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS contact (firstName VARCHAR(255), lastName VARCHAR(255), phone1 VARCHAR(255), phone VARCHAR(255), email VARCHAR(255), state VARCHAR(255))");
+        preparedStatement.execute();
+    }
 
     public void search() throws SQLException {
         Contact contact = new Contact("Anshul", "Rana", "12345", "54321", "anshul@gmail.com","KTM");
-
 
         //when
         ContactDAO dao = new ContactDAO(dataSource);
@@ -57,6 +69,7 @@ public class ContactJDBCDAO {
         while (resultSet.next()) {
             retrievedName = resultSet.getString("firstName");
         }
+        System.out.println(retrievedName);
         Assertions.assertNotNull(retrievedName);
     }
 }

@@ -10,8 +10,8 @@ public class ContactDAO {
 
     DataSource dataSource;
 
-    public ContactDAO(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public ContactDAO(DataSource ds) {
+        this.dataSource = ds;
     }
 
     public void insert(Contact contact) {

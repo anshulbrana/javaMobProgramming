@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import services.data.ContactJDBCDAO;
@@ -22,13 +23,13 @@ import java.sql.SQLException;
 
 public class TestDAO1 {
 
-//    static {
-//        System.setProperty("conf.file", "src/test/resources/conf.properties");
-//    }
-//
-//    @Inject
-//    @Named("db.dataSource")
-//    DataSource dataSource;
+    static {
+        System.setProperty("conf.file", "src/test/resources/conf.properties");
+    }
+
+    @Inject
+    @Named("db.dataSource")
+    DataSource dataSource;
 //
 //    @BeforeEach
 //    public void create() throws SQLException {
@@ -39,12 +40,17 @@ public class TestDAO1 {
 //        preparedStatement.execute();
 //    }
 
+    private ContactJDBCDAO contactJDBCDAO;
 
     @Test
     public void test() throws SQLException {
+        contactJDBCDAO = new ContactJDBCDAO();
+        Assertions.assertNotNull(dataSource);
+        contactJDBCDAO.setConnection(dataSource.getConnection());
+        contactJDBCDAO.setDataSource(dataSource);
+        Connection connection = dataSource.getConnection();
 
-        ContactJDBCDAO contactJDBCDAO = new ContactJDBCDAO();
-//        contactJDBCDAO.create();
+        contactJDBCDAO.create();
         contactJDBCDAO.search();
 
     }
