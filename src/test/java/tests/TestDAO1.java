@@ -30,25 +30,18 @@ public class TestDAO1 {
     @Inject
     @Named("db.dataSource")
     DataSource dataSource;
-//
-//    @BeforeEach
-//    public void create() throws SQLException {
-//        // TO create a table in in-memory database
-//        Assertions.assertNotNull(dataSource);
-//        Connection connection = dataSource.getConnection();
-//        PreparedStatement preparedStatement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS contact (firstName VARCHAR(255), lastName VARCHAR(255), phone1 VARCHAR(255), phone VARCHAR(255), email VARCHAR(255), state VARCHAR(255))");
-//        preparedStatement.execute();
-//    }
+
 
     private ContactJDBCDAO contactJDBCDAO;
 
     @Test
     public void test() throws SQLException {
+
+
         contactJDBCDAO = new ContactJDBCDAO();
         Assertions.assertNotNull(dataSource);
         contactJDBCDAO.setConnection(dataSource.getConnection());
         contactJDBCDAO.setDataSource(dataSource);
-        Connection connection = dataSource.getConnection();
 
         contactJDBCDAO.create();
         contactJDBCDAO.search();
