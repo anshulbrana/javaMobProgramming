@@ -6,6 +6,8 @@ import java.util.List;
 
 public class TestMVN2 {
 
+    //This class is used for deserialization of csv file
+
     public static void main(String[] args) throws Exception {
         //Given
         ContactCsvDAO testContactCsvDAO = new ContactCsvDAO("./src/test/resources/17-contacts.csv");

@@ -3,6 +3,7 @@ package tests;
 import conf.AppConfiguration;
 import datamodel.Contact;
 import jdk.jfr.Name;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -24,6 +25,7 @@ public class TestSPR3 {
     Contact contact;
 
     @Test
+    @DisplayName("Injection of instance of a person constructed by spring")
     public void testInjectionOfPerson(){
         System.out.println(contact);
     }

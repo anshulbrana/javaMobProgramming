@@ -4,6 +4,7 @@ import conf.AppConfiguration;
 import datamodel.Contact;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -79,6 +80,7 @@ public class TestDAO3 {
     }
 
     @Test
+    @DisplayName("Updating address of contact Sage Wieser by email")
     public void testUCa() throws SQLException {
         //Update database
 
@@ -95,10 +97,11 @@ public class TestDAO3 {
             sageAddress = resultSet.getString("address");
             sageName = resultSet.getString("firstName");
         }
-        System.out.printf("%s : %s", sageName, sageAddress);
+        System.out.printf("%s : %s \n", sageName, sageAddress);
     }
 
     @Test
+    @DisplayName("Finding all people living in New York state (code = NY)")
     public void testUCb() throws SQLException {
         ResultSet resultSet = connection.prepareStatement("select * from contact where state = 'NY'").executeQuery();
 
@@ -111,6 +114,7 @@ public class TestDAO3 {
     }
 
     @Test
+    @DisplayName("Counting number of people per state")
     public void testUCc() throws SQLException {
 
         String query = "select state, count(state) \n" +

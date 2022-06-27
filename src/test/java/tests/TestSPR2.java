@@ -3,6 +3,7 @@ package tests;
 import conf.AppConfiguration;
 import jdk.jfr.Name;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -25,6 +26,7 @@ public class TestSPR2 {
     String testSpring;
 
     @Test
+    @DisplayName("Injecting previously declared bean named myFirstBean")
     public void testInjection(){
         Assertions.assertNotNull(testSpring);
         System.out.println(testSpring);

@@ -2,10 +2,9 @@ package tests;
 
 import conf.AppConfiguration;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import services.data.ContactJDBCDAO;
@@ -13,8 +12,6 @@ import services.data.ContactJDBCDAO;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
@@ -35,6 +32,7 @@ public class TestDAO1 {
     private ContactJDBCDAO contactJDBCDAO;
 
     @Test
+    @DisplayName("Testing of ContactJDBCDAO on create() and search() methods")
     public void test() throws SQLException {
 
 

@@ -2,6 +2,7 @@ package tests;
 
 import datamodel.Contact;
 import org.junit.*;
+import org.junit.jupiter.api.DisplayName;
 import services.data.ContactCsvDAO;
 import services.exceptions.UnableToLoadContactsException;
 import java.net.URISyntaxException;
@@ -42,6 +43,7 @@ public class TestJUN2 {
     }
 
     @Test
+    @DisplayName("Before, BeforeClass, After, AfterClass that manages instance from the class that does the deserialization")
     public void TestJune2Test() throws Exception {
 
     }

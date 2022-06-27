@@ -2,6 +2,7 @@ package tests;
 
 import conf.AppConfiguration;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -29,6 +30,7 @@ public class TestSPR4 {
     DataSource dataSource;
 
     @Test
+    @DisplayName("Injection of DataSource instance and assertion that shows that this Database is ready to use")
     public void TestDataSource() throws SQLException {
         Assertions.assertNotNull(dataSource);
         Connection connection = dataSource.getConnection();
