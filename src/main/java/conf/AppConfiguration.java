@@ -23,7 +23,7 @@ public class AppConfiguration {
 
     @Bean
     public Contact checkContact() {
-        return new Contact("Mitsue", "Tollner", "773-573-6914", "773-924-8565", "mitsue_tollner@yahoo.com", "IL");
+        return new Contact("Mitsue", "Tollner", "773-573-6914", "773-924-8565", "mitsue_tollner@yahoo.com", "IL", "7 Eads St");
     }
 
     @Bean("conf.mainConf")

@@ -17,7 +17,7 @@ public class ContactDAO {
     public void insert(Contact contact) {
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO contact ( firstName, lastName, phone1, phone, email, state ) VALUES ( ?, ?, ?, ?, ?, ?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO contact ( firstName, lastName, phone1, phone, email, state, address ) VALUES ( ?, ?, ?, ?, ?, ?, ?)");
 
             //should be set manually
             preparedStatement.setString(1, contact.getFirstName());
@@ -26,6 +26,7 @@ public class ContactDAO {
             preparedStatement.setString(4, contact.getPhone());
             preparedStatement.setString(5, contact.getEmail());
             preparedStatement.setString(6, contact.getState());
+            preparedStatement.setString(7, contact.getAddress());
 
             preparedStatement.execute();
             connection.close();

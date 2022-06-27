@@ -8,17 +8,17 @@ public class Contact {
     private String phone1;
     private String phone;
     private String email;
+    private String address;
 
 
-    public Contact(String firstName, String lastName,String phone1, String phone, String email, String state){
+    public Contact(String firstName, String lastName,String phone1, String phone, String email, String state, String address){
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone1 = phone1;
         this.phone = phone;
         this.state = state;
         this.email = email;
-
-
+        this.address = address;
     }
 
     public String getState() {
@@ -69,6 +69,15 @@ public class Contact {
         this.email = email;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+
     @Override
     public String toString() {
         return "Contact{" +
@@ -78,6 +87,7 @@ public class Contact {
                 ", phone1='" + phone1 + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 

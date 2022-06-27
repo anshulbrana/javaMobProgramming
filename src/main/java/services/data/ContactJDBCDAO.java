@@ -50,12 +50,12 @@ public class ContactJDBCDAO {
         // TO create a table in in-memory database
         Assertions.assertNotNull(dataSource);
         connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS contact (firstName VARCHAR(255), lastName VARCHAR(255), phone1 VARCHAR(255), phone VARCHAR(255), email VARCHAR(255), state VARCHAR(255))");
+        PreparedStatement preparedStatement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS contact (firstName VARCHAR(255), lastName VARCHAR(255), phone1 VARCHAR(255), phone VARCHAR(255), email VARCHAR(255), state VARCHAR(255), address VARCHAR(255))");
         preparedStatement.execute();
     }
 
     public void search() throws SQLException {
-        Contact contact = new Contact("Anshul", "Rana", "12345", "54321", "anshul@gmail.com","KTM");
+        Contact contact = new Contact("Anshul", "Rana", "12345", "54321", "anshul@gmail.com","KTM", "Samakhusi");
 
         //when
         ContactDAO dao = new ContactDAO(dataSource);

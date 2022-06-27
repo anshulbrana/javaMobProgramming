@@ -2,7 +2,6 @@ package tests;
 
 import conf.AppConfiguration;
 import datamodel.Contact;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,8 +37,9 @@ public class TestDAO3 {
     private ContactJDBCDAO contactJDBCDAO;
     public static ContactCsvDAO contactCsvDAO;
     public static List<Contact> contactList = new ArrayList<>();
+    public Connection connection;
 
-    @Test
+    @BeforeEach
     public void test() throws SQLException, UnableToLoadContactsException, URISyntaxException {
         contactJDBCDAO = new ContactJDBCDAO();
         Assertions.assertNotNull(dataSource);
@@ -59,7 +59,7 @@ public class TestDAO3 {
         //Create connection
 
         contactJDBCDAO.create();
-        Connection connection = dataSource.getConnection();
+        connection = dataSource.getConnection();
 
         for (int i = 0; i < contactList.size(); i++) {
             contactDAO.insert(contactList.get(i));
@@ -71,12 +71,67 @@ public class TestDAO3 {
         //Create array list for checking firstname from database
         ArrayList<String> firstNameList = new ArrayList<>();
 
-        System.out.println(resultSet);
+//        System.out.println(resultSet);
+        while (resultSet.next()) {
+            firstNameList.add(resultSet.getString("firstName"));
+        }
+//        System.out.println(firstNameList);
+    }
+
+    @Test
+    public void testUCa() throws SQLException {
+        //Update database
+
+        String query = "update contact set address = '5 Boston Ave #188' where email = 'sage_wieser@cox.net'";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.executeUpdate();
+
+        //Check database result if it is updated or not
+        ResultSet resultSet = connection.prepareStatement("select * from contact where firstName = 'Sage'").executeQuery();
+
+        String sageAddress = null;
+        String sageName = null;
+        while (resultSet.next()) {
+            sageAddress = resultSet.getString("address");
+            sageName = resultSet.getString("firstName");
+        }
+        System.out.printf("%s : %s", sageName, sageAddress);
+    }
+
+    @Test
+    public void testUCb() throws SQLException {
+        ResultSet resultSet = connection.prepareStatement("select * from contact where state = 'NY'").executeQuery();
+
+        //Create array list for checking firstname from database
+        ArrayList<String> firstNameList = new ArrayList<>();
         while (resultSet.next()) {
             firstNameList.add(resultSet.getString("firstName"));
         }
         System.out.println(firstNameList);
-
-
     }
+
+    @Test
+    public void testUCc() throws SQLException {
+
+        String query = "select state, count(state) \n" +
+                "from contact\n" +
+                "group by state";
+
+        ResultSet resultSet = connection.prepareStatement(query).executeQuery();
+
+        ArrayList<String> state = new ArrayList<>();
+        ArrayList<String> count = new ArrayList<>();
+        while (resultSet.next()) {
+            state.add(resultSet.getString("state"));
+            count.add(resultSet.getString("count(state)"));
+        }
+
+        for( int i = 0; i<state.size();i++){
+            System.out.printf("%s : %s \n", state.get(i), count.get(i));
+        }
+//        System.out.println(state);
+//        System.out.println(count);
+    }
+
+
 }

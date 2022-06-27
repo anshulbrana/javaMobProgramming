@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="tests.TestJUN1" time="0.023" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="tests.TestDAO3" time="0.001" tests="2" errors="2" skipped="0" failures="0">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -62,5 +62,14 @@
     <property name="java.class.version" value="55.0"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="testJUN1" classname="tests.TestJUN1" time="0.002"/>
+  <testcase name="testUCa" classname="tests.TestDAO3" time="0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at tests.TestDAO3.testUCa(TestDAO3.java:86)
+</error>
+  </testcase>
+  <testcase name="testUCb" classname="tests.TestDAO3" time="0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at tests.TestDAO3.testUCb(TestDAO3.java:101)
+</error>
+  </testcase>
 </testsuite>

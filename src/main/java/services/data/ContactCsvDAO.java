@@ -46,10 +46,11 @@ public class ContactCsvDAO {
             String phone = parts[9];
             String email = parts[10];
             String state = parts[6];
+            String address = parts[3];
 
             //only 5 field out of 11 are mapped
 
-            Contact contact = new Contact(firstName, lastName, phone1, phone, email, state);
+            Contact contact = new Contact(firstName, lastName, phone1, phone, email, state, address);
             contactList.add(contact);
 
         }

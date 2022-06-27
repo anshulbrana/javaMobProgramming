@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: tests.TestDAO3
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in tests.TestDAO3
+testUCa(tests.TestDAO3)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at tests.TestDAO3.testUCa(TestDAO3.java:86)
+
+testUCb(tests.TestDAO3)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at tests.TestDAO3.testUCb(TestDAO3.java:101)
+
