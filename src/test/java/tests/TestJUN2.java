@@ -2,7 +2,8 @@ package tests;
 
 import datamodel.Contact;
 import org.junit.*;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 import services.data.ContactCsvDAO;
 import services.exceptions.UnableToLoadContactsException;
 import java.net.URISyntaxException;
@@ -12,39 +13,50 @@ import java.util.List;
 
 public class TestJUN2 {
 
-    public static List<Contact> contactList = new ArrayList<>();
-    public static ContactCsvDAO contactCsvDAO;
-    public static ArrayList<String> firstNameList = new ArrayList<>();
+    private static String filePath;
 
-    @BeforeClass
-    public static void openFile() throws URISyntaxException {
-        String rawStringList = TestMVN2.class.getResource("/17-contacts.csv").toURI().getPath();
-        contactCsvDAO = new ContactCsvDAO(rawStringList);
-    }
+    private ContactCsvDAO contactCsvDAO;
 
-    @Before
-    public void readFile() throws UnableToLoadContactsException {
-        contactList = contactCsvDAO.readAll();
-            for (int i = 0; i < contactList.size(); i++) {
-                firstNameList.add(contactList.get(i).getFirstName());
-            }
+
+    @BeforeAll
+    public static void beforeAllTest() throws URISyntaxException {
+        filePath = ContactCsvDAO.class
+                .getResource("/17-contacts.csv")
+                .toURI()
+                .getPath();
 
     }
 
-    @After
-    public void getFromFile() {
-        System.out.println(firstNameList);
-
-    }
-
-    @AfterClass
-    public static void destroyFile() {
-        contactList.clear();
+    @BeforeEach
+    public void beforeEachTest() {
+        //given
+        this.contactCsvDAO = new ContactCsvDAO(filePath);
     }
 
     @Test
-    @DisplayName("Before, BeforeClass, After, AfterClass that manages instance from the class that does the deserialization")
-    public void TestJune2Test() throws Exception {
+    public void deserializationTest() throws Exception {
+        //given the file and the dao
+        //when
+        List<Contact> contactList = this.contactCsvDAO.readAll();
+        contactCsvDAO.sort(contactList);
 
+        Contact shouldBeFoundContact =
+                new Contact("Lenna", "Paprocki", "907-385-4412", "907-921-2010","lpaprocki@hotmail.com","AK","639 Main St");
+
+        //then
+        Assertions.assertEquals(contactList.get(0), shouldBeFoundContact);
     }
+
+    @AfterEach
+    public void afterEach() {
+        System.out.println("after each");
+    }
+
+
+    @AfterAll
+    public static void afterAll() {
+        System.out.println("after all");
+    }
+
+
 }
